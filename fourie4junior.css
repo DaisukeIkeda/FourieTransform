@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-touch-callout: none; /* http://blog.asial.co.jp/iphone/1147 */
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.cell { /* 1 マスを表すスタイル */
+    width: 30px;
+    height: 40px;
+    display: inline-block;
+  /**/
+    /*border: 1px solid green;*/
+}
+/* Panels are 30 pixels by 40 pixels including its borders. */
+.panel {
+    border: 1px solid orange;
+    position: relative;
+    background-color: white;
+    width: 30px;
+    height: 40px;
+    /* centering the content. */
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+body {
+    /* cover the entire screen */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* はみ出した部分を表示しない */
+}
+#main {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 32px;
+    border: 1px solid green;
+}
+#hcentering {
+  /* border: 4pt solid orange;*/
+    /*position: relative;*/
+    position: absolute;
+    z-index: 10;
+    height: 100%;
+    /* center the content horizontally */
+    width: 480px;  /* total width of 16 panels with 30px width */
+    margin-left: auto;
+    margin-right: auto;
+}
+#vcentering {
+  /* border: 4pt solid yellow;*/
+    width: 60%;
+    /* center the content vertically */
+    position: absolute;
+    right: 240px;
+    height: 640px;  /* total height of 16 panels with 40px height */
+    top: 50%;
+    margin-top: -320px;
+}
+#board {
+    /* put them at the same position with the same size */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box; /* border-box だと、周りの太い線が現れない */
+    border: 8px solid black;
+    /* 以下がオリジナルの board 部分*/
+    margin: auto;
+    font-size: 32px;
+    font-weight: bold;
+}
+.row:before {
+    display: block;
+    position: absolute;
+    width: 60px;
+    height: 40px;
+    left: -60px;
+    line-height: 40px;
+    font-size: 32px;
+    text-align: center;
+}
+.row-holder {
+    width: 480px;
+    height: 40px;
+}
