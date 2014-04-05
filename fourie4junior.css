@@ -20,7 +20,7 @@
     /*border: 1px solid green;*/
 }
 /* Panels are 30 pixels by 40 pixels including its borders. */
-.panel {
+.panel, .panel4base, .panel4res {
     border: 1px solid orange;
     position: relative;
     background-color: white;
@@ -30,6 +30,9 @@
     display: table-cell;
     text-align: center;
     vertical-align: middle;
+}
+.panel4res {
+    border: 1px solid blue;
 }
 body {
     /* cover the entire screen */
@@ -43,8 +46,6 @@ body {
     width: 100%;
     top: 60px;
     height: 550px;
-    /*bottom: 24px;*/
-    border: 1px solid green;
 }
 .hcentering {
   /* border: 4pt solid orange;*/
@@ -67,7 +68,7 @@ body {
     top: 50%;
     margin-top: -240px;
 }
-.board, .board2 {
+.board, .board2, .board3 {
     /* put them at the same position with the same size */
     position: absolute;
     /*width: 100%;*/
@@ -95,12 +96,11 @@ body {
     top: 0;
     left: 460px;
 }
-.row:before {
-    display: block;
+.row:before{ /* 縦の数字部分 */
     position: absolute;
-    width: 60px;
+    width: 40px;
     height: 30px;
-    left: -60px;
+    left: -40px;
     line-height: 30px;
     font-size: 24px;
     text-align: center;
@@ -109,7 +109,7 @@ body {
     width: 120px;
     height: 30px;
 }
-.row-holder2 {
+.row-holder4base {
     width: 480px;
     height: 30px;
 }
@@ -121,20 +121,10 @@ body {
     left: -246px;
     width:120px;
 }
-#display1{
+#display1, #display2, #display3, #display4{
     display: inline-block;
-    width: 23px;
-}
-#display2{
-    display: inline-block;
-    width: 23px;
-}
-#display3{
-    display: inline-block;
-    width: 23px;
-}
-#display4{
-    display: inline-block;
+    position: relative;
+    top: -10px;
     width: 23px;
 }
 .header {
@@ -194,19 +184,19 @@ body {
     left: 90px;
     bottom: 0;
 }
-.clear-button {
+.calc-button {
     display: inline-block;
     position: absolute;
     font-size: 24px;
     text-align: center;
     top: 520px;
-}
-#clear1{
-    left: 90px;
-}
-#clear2{
     left: 270px;
 }
-#clear3{
+.composite-button {
+    display: inline-block;
+    position: absolute;
+    font-size: 24px;
+    text-align: center;
+    top: 520px;
     left: 810px;
 }
