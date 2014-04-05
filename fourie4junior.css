@@ -42,7 +42,7 @@ body {
     position: absolute;
     width: 100%;
     top: 60px;
-    height: 540px;
+    height: 550px;
     /*bottom: 24px;*/
     border: 1px solid green;
 }
@@ -113,6 +113,30 @@ body {
     width: 480px;
     height: 30px;
 }
+.display{
+    display: inline-block;
+    position: absolute;
+    font-size: 24px;
+    top: -20px;
+    left: -246px;
+    width:120px;
+}
+#display1{
+    display: inline-block;
+    width: 23px;
+}
+#display2{
+    display: inline-block;
+    width: 23px;
+}
+#display3{
+    display: inline-block;
+    width: 23px;
+}
+#display4{
+    display: inline-block;
+    width: 23px;
+}
 .header {
     display: inline-block;
     position: absolute;
@@ -120,14 +144,55 @@ body {
     text-align: center;
     top: -35px;
 }
-#header1{
-    left: -260px;
-}
 #header2{
     left: -80px;
 }
 #header3{
     left: 460px;
+}
+#cursor-panel{
+    position: absolute;
+    top: 520px;
+    left: 90px;
+    width: 120px;
+    height: 60px;
+}
+.move-button {
+    position: absolute;
+    width: 30px;
+    font-size: 24px;
+}
+#up-button1 {
+    left: 0;
+    top: 0;
+}
+#down-button1 {
+    left: 0;
+    bottom: 0;
+}
+#up-button2 {
+    left: 30px;
+    top: 0;
+}
+#down-button2 {
+    left: 30px;
+    bottom: 0;
+}
+#up-button3 {
+    left: 60px;
+    top: 0;
+}
+#down-button3 {
+    left: 60px;
+    bottom: 0;
+}
+#up-button4 {
+    left: 90px;
+    top: 0;
+}
+#down-button4 {
+    left: 90px;
+    bottom: 0;
 }
 .clear-button {
     display: inline-block;

@@ -3,62 +3,50 @@ $(function() {
 
     var mouse_tracking;
     var touch_tracking = [];
+    var input_vec = [1, 1, 1, 1];
+    //var tr=[8, 7, 6, 5, 4, 3, 2, 1, 0, -1, -2, -3, -4, -5, -6, -7, -8];
+    //        1  2  3  4  5  6  7  8  9  10 11 12  13 14 15 16 17
+    //  
+
+    // 送信ブロックのベクトルを変化させる
+    function change_vec(col, v){ // 1<=col<=4, v = 1 or -1
+	var tmp;
+	if ( v == 1 && input_vec[col-1] < 8 ){
+	    if ( input_vec[col-1] >= 0 ){
+		tmp = 8 - input_vec[col-1];
+		$("#panel" + tmp + '-' + col).attr("data-color-code", 1);
+	    }
+	    else{
+		tmp = 8 + (-1)*input_vec[col-1] + 1; // 0 の分を一つ加える
+		$("#panel" + tmp + '-' + col).attr("data-color-code", 0);
+	    }
+
+	    input_vec[col-1] += 1;
+	}
+	else if ( v == -1 && input_vec[col-1] > -8 ){
+	    if ( input_vec[col-1] > 0 ){
+		tmp = 8 - input_vec[col-1] + 1; // 0 の分を一つ加える
+		$("#panel" + tmp + '-' + col).attr("data-color-code", 0);
+	    }
+	    else{
+		tmp = 8 + (-1)*input_vec[col-1] + 1;
+		$("#panel" + tmp + '-' + col).attr("data-color-code", 1);
+	    }
+	    console.log("a=" + input_vec[col-1]);
+	    console.log("tmp=" + tmp);
+
+	    input_vec[col-1] -= 1;
+	}
+	console.log("after: " + input_vec);
+
+	// change display number
+	$("#display" + col).html(input_vec[col-1]);
+    }
 
     // http://stackoverflow.com/questions/4817029/whats-the-best-way-to-detect-a-touch-screen-device-using-javascript
     function is_touch_device() {
         return !!('ontouchstart' in window) // works on most browsers
             || !!('onmsgesturechange' in window); // works on ie10
-    }
-
-    function on_panel_mousedown(e) {
-        mouse_tracking = {
-            target: this,
-            initial_panel_color: $(this).hasClass("white") ? "white" : "black"
-        };
-	$(this).attr("data-color-code", 1);
-    }
-
-    function on_panel_mousemove(e) {
-        if (mouse_tracking && mouse_tracking.target !== this) {
-	    $(this).attr("data-color-code", 1);
-            mouse_tracking.target = this;
-        }
-    }
-
-    function on_panel_mouseup(e) {
-        mouse_tracking = null;
-    }
-
-    function on_panel_touchstart(e) {
-        $.each(e.originalEvent.changedTouches, function(_, t) {
-            var target = document.elementFromPoint(t.clientX, t.clientY);
-            if ($(target).hasClass('panel')) {
-                touch_tracking[t.identifier] = {
-                    target: target,
-                    initial_panel_color: $(target).hasClass("white") ? "white" : "black"
-                };
-		$(target).attr("data-color-code", 1);
-            }
-        });
-    }
-
-    function on_panel_touchmove(e) {
-        $.each(e.originalEvent.changedTouches, function(_, t) {
-            var target = document.elementFromPoint(t.clientX, t.clientY);
-            if ($(target).hasClass('panel')) {
-                if (touch_tracking[t.identifier] && touch_tracking[t.identifier].target !== target) {
-		    $(target).attr("data-color-code", 1);
-
-                    touch_tracking[t.identifier].target = target;
-                }
-            }
-        });
-    }
-
-    function on_panel_touchend(e) {
-        $.each(e.originalEvent.changedTouches, function(_, t) {
-            touch_tracking[t.identifier] = null;
-        });
     }
 
     function on_button_down(e) { // for both mouse and touch
@@ -116,8 +104,22 @@ $(function() {
 	}
     }
 
+    function initialize_inputboard(){
+	for(var j = 1; j <= 4; j++){ // j は横軸
+	    // we assume that initially input_vec[i] > 0
+	    for(var i = 8; i> 8 - input_vec[j-1]; i--){ // 8 が原点
+		$("#panel" + i + '-' + j ).attr("data-color-code", 1);
+	    }
+
+	    // change display number
+	    $("#display" + j).html(input_vec[j-1]);
+	}
+
+    }
+
     new_boards();
     new_bases();
+    initialize_inputboard();
 
     /* 軸の番号 */
     var num_str;
@@ -136,25 +138,67 @@ $(function() {
     }
 
     if (is_touch_device()) {
-        $(".panel").each(function() {
-            $(this).on('touchstart', on_panel_touchstart);
-            $(this).on('touchmove', on_panel_touchmove);
-            $(this).on('touchend', on_panel_touchend);
-        });
-    }
-    else {
-        $(".panel").each(function() {
-            $(this).on('mousedown', on_panel_mousedown);
-            $(this).on('mousemove', on_panel_mousemove);
-            $(this).on('mouseup', on_panel_mouseup);
-        });
-    }
+	// 増ボタン
+        $("#up-button1").on('touchstart', function(){
+	    return change_vec(1, 1);
+	});
+        $("#up-button2").on('touchstart', function(){
+	    return change_vec(2, 1);
+	});
+        $("#up-button3").on('touchstart', function(){
+	    return change_vec(3, 1);
+	});
+        $("#up-button4").on('touchstart', function(){
+	    return change_vec(4, 1);
+	});
 
-    // クリアボタン
-    if (is_touch_device()) {
+	// 減ボタン
+        $("#down-button1").on('touchstart', function(){
+	    return change_vec(1, -1);
+	});
+        $("#down-button2").on('touchstart', function(){
+	    return change_vec(2, -1);
+	});
+        $("#down-button3").on('touchstart', function(){
+	    return change_vec(3, -1);
+	});
+        $("#down-button4").on('touchstart', function(){
+	    return change_vec(4, -1);
+	});
+
+	// クリアボタン
         $(".clear-button").on('touchstart', on_button_down);
     }
     else {
+	// 増ボタン
+        $("#up-button1").on('click', function(){
+	    return change_vec(1, 1);
+	});
+        $("#up-button2").on('click', function(){
+	    return change_vec(2, 1);
+	});
+        $("#up-button3").on('click', function(){
+	    return change_vec(3, 1);
+	});
+        $("#up-button4").on('click', function(){
+	    return change_vec(4, 1);
+	});
+
+	// 減ボタン
+        $("#down-button1").on('click', function(){
+	    return change_vec(1, -1);
+	});
+        $("#down-button2").on('click', function(){
+	    return change_vec(2, -1);
+	});
+        $("#down-button3").on('click', function(){
+	    return change_vec(3, -1);
+	});
+        $("#down-button4").on('click', function(){
+	    return change_vec(4, -1);
+	});
+
+	// クリアボタン
         $(".clear-button").on('mousedown', on_button_down);
     }
 
