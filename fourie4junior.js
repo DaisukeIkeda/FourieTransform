@@ -15,9 +15,6 @@ $(function() {
             target: this,
             initial_panel_color: $(this).hasClass("white") ? "white" : "black"
         };
-	//console.log($("#palette .color.selected"));
-	//console.log($("#palette .color.selected").data("code"));
-	//console.log(typeof $("#palette .color.selected").data("code"));
 	$(this).attr("data-color-code", 1);
     }
 
@@ -64,47 +61,68 @@ $(function() {
         });
     }
 
+    function on_button_down(e) { // for both mouse and touch
+        $(".panel").each(function() {
+	    $(this).attr("data-color-code", 0);
+	});
+    }
+
+    var row_holder, row;
+    var cell, panel;
+
     // inputboard & outputboard
-    for (var i = 1; i <= 16; ++i) {
-        var row_holder = $('<div class="row-holder"></div>');
-        var row = $('<div id="row' + i + '" class="row"></div>');
-        for (var j = 1; j <= 4; ++j) {
-            var cell = $('<div id="cell' + i + '-' + j + '" class="cell"></div>');
-	    var panel = $('<div id="panel' + i + '-' + j + '" class="panel"></div>');
-            panel.appendTo(cell);
-            cell.appendTo(row);
+    function new_boards(){
+	for (var i = 1; i <= 16; ++i) {
+            row_holder = $('<div class="row-holder"></div>');
+            row = $('<div id="row' + i + '" class="row"></div>');
+            for (var j = 1; j <= 4; ++j) {
+		cell = $('<div id="cell' + i + '-' + j + '" class="cell"></div>');
+		panel = $('<div id="panel' + i + '-' + j + '" class="panel"></div>');
+		panel.appendTo(cell);
+		cell.appendTo(row);
 
-	    if ( i == 8 ) // 横軸の描画
-		$('<style>#panel' + i + '-' + j + '{ border-bottom: 2px solid black}</style>').appendTo('head');
-
-        }
-        row.appendTo(row_holder);
-        row_holder.appendTo('.board');
-
-	// board4base
-        row_holder = $('<div class="row-holder2"></div>');
-        row = $('<div id="row' + i + '" class="row"></div>');
-        for (var j = 1; j <= 16; ++j) {
-            var cell = $('<div id="cell' + i + '-' + j + '" class="cell"></div>');
-	    var panel = $('<div id="panel' + i + '-' + j + '" class="panel"></div>');
-            panel.appendTo(cell);
-            cell.appendTo(row);
-
-	    if ( i == 8 ){ // 横軸と縦軸の描画
-		if ( j % 4 == 0 )
-		    $('<style>#panel' + i + '-' + j + '{ border-bottom: 2px solid black; border-right: 1px solid black}</style>').appendTo('head');
-		else
+		if ( i == 8 ) // 横軸の描画
 		    $('<style>#panel' + i + '-' + j + '{ border-bottom: 2px solid black}</style>').appendTo('head');
-	    }else if ( j % 4 == 0){
+
+            }
+            row.appendTo(row_holder);
+            row_holder.appendTo('.board');
+	}
+    }
+
+    // board4base
+    function new_bases(){
+	for (var i = 1; i <= 16; ++i) {
+            row_holder = $('<div class="row-holder2"></div>');
+            row = $('<div id="row' + i + '" class="row"></div>');
+            for (var j = 1; j <= 16; ++j) {
+		var cell = $('<div id="cell' + i + '-' + j + '" class="cell"></div>');
+		var panel = $('<div id="panel' + i + '-' + j + '" class="panel"></div>');
+		panel.appendTo(cell);
+		cell.appendTo(row);
+
+		if ( i == 8 ){ // 横軸と縦軸の描画
+		    if ( j % 4 == 0 )
+			$('<style>#panel' + i + '-' + j + '{ border-bottom: 2px solid black; border-right: 1px solid black}</style>').appendTo('head');
+		    else
+			$('<style>#panel' + i + '-' + j + '{ border-bottom: 2px solid black}</style>').appendTo('head');
+		}else if ( j % 4 == 0){
 		    $('<style>#panel' + i + '-' + j + '{ border-right: 1px solid black}</style>').appendTo('head');
-	    }
+		}
 
-        }
-        row.appendTo(row_holder);
-        row_holder.appendTo('.board2');
+            }
+            row.appendTo(row_holder);
+            row_holder.appendTo('.board2');
+	}
+    }
 
-	/* 軸の名前*/
-        var num_str = (i <= 8 ? '' + 9 - i : '' + 8 - i);
+    new_boards();
+    new_bases();
+
+    /* 軸の番号 */
+    var num_str;
+    for (var i = 1; i <= 16; ++i) {
+        num_str = (i <= 8 ? '' + 9 - i : '' + 8 - i);
         $('<style>#row' + i + ':before { content: "' + num_str + '"; }</style>').appendTo('head');
     }
 
@@ -131,7 +149,14 @@ $(function() {
             $(this).on('mouseup', on_panel_mouseup);
         });
     }
-    $(".edit-button").addClass("on");
+
+    // クリアボタン
+    if (is_touch_device()) {
+        $(".clear-button").on('touchstart', on_button_down);
+    }
+    else {
+        $(".clear-button").on('mousedown', on_button_down);
+    }
 
     // style for black&white cells
     i=0;

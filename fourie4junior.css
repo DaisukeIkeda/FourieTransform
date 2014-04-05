@@ -42,7 +42,7 @@ body {
     position: absolute;
     width: 100%;
     top: 60px;
-    height: 500px;
+    height: 540px;
     /*bottom: 24px;*/
     border: 1px solid green;
 }
@@ -67,7 +67,7 @@ body {
     top: 50%;
     margin-top: -240px;
 }
-.board {
+.board, .board2 {
     /* put them at the same position with the same size */
     position: absolute;
     /*width: 100%;*/
@@ -80,18 +80,8 @@ body {
     font-size: 24px;
     font-weight: bold;
 }
-.board2 { /*same as .board */
-    /* put them at the same position with the same size */
-    position: absolute;
-    /*width: 100%;*/
+.board2 {
     width: 480px;
-    height: 100%;
-    box-sizing: content-box; /* border-box だと、周りの太い線が現れない */
-    border: 4px solid black;
-    /* 以下がオリジナルの board 部分*/
-    margin: auto;
-    font-size: 24px;
-    font-weight: bold;
 }
 #inputboard{
     top: 0;
@@ -128,16 +118,30 @@ body {
     position: absolute;
     font-size: 24px;
     text-align: center;
+    top: -35px;
 }
 #header1{
-    top: -35px;
     left: -260px;
 }
 #header2{
-    top: -35px;
     left: -80px;
 }
 #header3{
-    top: -35px;
     left: 460px;
+}
+.clear-button {
+    display: inline-block;
+    position: absolute;
+    font-size: 24px;
+    text-align: center;
+    top: 520px;
+}
+#clear1{
+    left: 90px;
+}
+#clear2{
+    left: 270px;
+}
+#clear3{
+    left: 810px;
 }
