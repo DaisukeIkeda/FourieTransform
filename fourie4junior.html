@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html manifest="fourie.appcache">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -12,11 +12,19 @@
   <body>
     <div id="main">
       <div id="vcentering">
-        <div id="hcentering">
-          <div id="board">
-          </div>
-        </div>
+	<header>
+	  <div class="header" id="header1">送信ブロック</div>
+	  <div class="header" id="header2">基本ブロック</div>
+	  <div class="header" id="header3">受信ブロック</div>
+	</header>
+        <div class="hcentering">
+          <div class="board" id="inputboard">
+	  </div>
+          <div class="board2" id="board4base">
+	  </div>
+          <div class="board" id="outputboard">
+	  </div>
+	</div>
       </div>
-    </div>
   </body>
 </html>
