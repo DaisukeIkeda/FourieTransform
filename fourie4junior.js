@@ -26,7 +26,7 @@ $(function() {
 		$("#panel" + tmp + '-' + col).attr("data-color-code", 1);
 	    }
 	    else{
-		tmp = max_height + (-1)*input_vec[col-1] + 1; // 0 の分を一つ加える
+		tmp = max_height + (-1)*input_vec[col-1];
 		$("#panel" + tmp + '-' + col).attr("data-color-code", 0);
 	    }
 
@@ -46,7 +46,7 @@ $(function() {
 	}
 
 	// change display number
-	$("#display" + col).html(input_vec[col-1]);
+	$("#input_display" + col).html(input_vec[col-1]);
     }
 
     function inner_product(v1, v2) {
@@ -71,7 +71,16 @@ $(function() {
             $(this).attr("data-color-code", 0);
 	    $(this).attr("style", "height:30px;");
         });
+
 	drow_bases();
+
+	// change display number
+	for(var i=0; i<dim; i++){
+	    for(var j=1; j<=dim; j++){
+		console.log("DEBUG: (i, j)=(" + i + ", " + j + "), factors[i]=" + factors[i] + ", basic_vecs[i][j-1]=" + basic_vecs[i][j-1]);
+		$("#base_display" + (i+1) + j ).html(factors[i]*basic_vecs[i][j-1]);
+	    }
+	}
     }
 
     // 基本ブロックのベクトルを描画する
@@ -123,11 +132,19 @@ $(function() {
 		    }
 		}
 	    }
-	    // TODO 表示用のディスプレイもあったほうがよいかもしれない
 	}
     }
 
     function on_composite_vecs(e) { // for both mouse and touch
+	// 初期化
+	$(".panel4res").each(function() {
+            $(this).attr("data-color-code", 0);
+	    $(this).attr("style", "height:30px;");
+        });
+
+	for(var i=0; i<dim; i++)
+		output_vec[i]=0;
+
 	console.log("on_composite_vecs: ---- ");
 	for(var i=0; i<dim; i++){
 	    console.log("factors[i]=" + factors[i]);
@@ -140,6 +157,10 @@ $(function() {
 	console.log(" ---- ");
 
 	drow_output_vec();
+	for(var i=1; i<=dim; i++){
+	    // change display number
+	    $("#output_display" + i).html(output_vec[i-1]);
+	}
     }
 
     // 受信ブロックのベクトルを描画する
@@ -160,7 +181,6 @@ $(function() {
 		}
 	    }
 	}
-	// TODO 表示用のディスプレイもあったほうがよいかもしれない
     }
 
     function new_inputboard(){
@@ -249,7 +269,7 @@ $(function() {
 	    }
 
 	    // change display number
-	    $("#display" + j).html(input_vec[j-1]);
+	    $("#input_display" + j).html(input_vec[j-1]);
 	}
     }
 

@@ -45,7 +45,7 @@ body {
     position: absolute;
     width: 100%;
     top: 60px;
-    height: 550px;
+    height: 520px;
 }
 .hcentering {
   /* border: 4pt solid orange;*/
@@ -113,18 +113,65 @@ body {
     width: 480px;
     height: 30px;
 }
-.display{
+.input_display{
     display: inline-block;
     position: absolute;
     font-size: 24px;
-    top: -20px;
-    left: -246px;
+    top: -25px;
     width:120px;
 }
-#display1, #display2, #display3, #display4{
+#input_display1, #input_display2, #input_display3, #input_display4{
     display: inline-block;
     position: relative;
-    top: -10px;
+    left: -246px;
+    width: 23px;
+}
+.base_display{
+    display: inline-block;
+    position: absolute;
+    font-size: 24px;
+    top: -25px;
+    width: 480px
+}
+#base_display11, #base_display12, #base_display13, #base_display14{
+    font-size: 12px;
+    display: inline-block;
+    position: relative;
+    left: -80px;
+    width: 23px;
+}
+#base_display21, #base_display22, #base_display23, #base_display24{
+    font-size: 12px;
+    display: inline-block;
+    position: relative;
+    left: -72px;
+    width: 23px;
+}
+#base_display31, #base_display32, #base_display33, #base_display34{
+    font-size: 12px;
+    display: inline-block;
+    position: relative;
+    left: -66px;
+    width: 23px;
+}
+#base_display41, #base_display42, #base_display43, #base_display44{
+    font-size: 12px;
+    display: inline-block;
+    position: relative;
+    left: -64px;
+    width: 23px;
+}
+.output_display{
+    display: inline-block;
+    position: absolute;
+    font-size: 24px;
+    top: -25px;
+    width: 120px
+}
+#output_display1, #output_display2, #output_display3, #output_display4{
+    display: inline-block;
+    position: relative;
+    left: 470px;
     width: 23px;
 }
 .header {
@@ -132,7 +179,10 @@ body {
     position: absolute;
     font-size: 24px;
     text-align: center;
-    top: -35px;
+    top: -60px;
+}
+#header1{
+    left: -260px;
 }
 #header2{
     left: -80px;
