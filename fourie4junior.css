@@ -169,6 +169,7 @@ body {
     width: 120px
 }
 #output_display1, #output_display2, #output_display3, #output_display4{
+    font-size: 12px;
     display: inline-block;
     position: relative;
     left: 470px;
@@ -241,6 +242,26 @@ body {
     text-align: center;
     top: 520px;
     left: 270px;
+}
+.showBase {
+    display: inline-block;
+    position: absolute;
+    font-size: 24px;
+    text-align: center;
+    top: 520px;
+    left: 360px;
+}
+#showBase1 {
+    left: 400px;
+}
+#showBase2 {
+    left: 430px;
+}
+#showBase3 {
+    left: 460px;
+}
+#showBase4 {
+    left: 490px;
 }
 .composite-button {
     display: inline-block;

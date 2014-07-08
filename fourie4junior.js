@@ -10,6 +10,7 @@ $(function() {
 		      [1, -1, 1, -1]];
     var factors = [1, 0, 0, 0]; //input_vec = \sum_i factors[i]*basic_vecs[i]
     var output_vec = [0, 0, 0, 0];
+    var showBase_vec = [1, 1, 1, 1]; // 基底ベクトルを用いるかどうかのフラグ
 
     // http://stackoverflow.com/questions/4817029/whats-the-best-way-to-detect-a-touch-screen-device-using-javascript
     function is_touch_device() {
@@ -142,17 +143,52 @@ $(function() {
 	    $(this).attr("style", "height:30px;");
         });
 
+	// 出力ベクトルの初期化
 	for(var i=0; i<dim; i++)
-		output_vec[i]=0;
+	    output_vec[i]=0;
+
+	// 用いる基底ベクトルのオン/オフ(チェックボックス)
+	for(var i=0; i<dim; i++){
+	    // TODO i を使って、1 回で済ませたい
+	    //console.log("DARUMA2" + $("#showBase" + (i+1) + ":checked"));
+	    //if ( $("#showBase" + (i+1) + ":checked") == "1"){ 
+	    //showBase_vec[i]=1;
+	    //}else{
+	    //showBase_vec[i]=0;
+	    //}
+
+	    if ( document.getElementById("showBase1").checked){
+		showBase_vec[0]=1;
+	    }else{
+		showBase_vec[0]=0;
+	    }
+	    if ( document.getElementById("showBase2").checked){
+		showBase_vec[1]=1;
+	    }else{
+		showBase_vec[1]=0;
+	    }
+	    if ( document.getElementById("showBase3").checked){
+		showBase_vec[2]=1;
+	    }else{
+		showBase_vec[2]=0;
+	    }
+	    if ( document.getElementById("showBase4").checked){
+		showBase_vec[3]=1;
+	    }else{
+		showBase_vec[3]=0;
+	    }
+	}
 
 	console.log("on_composite_vecs: ---- ");
 	for(var i=0; i<dim; i++){
 	    console.log("factors[i]=" + factors[i]);
-	    console.log("base=" + basic_vecs[i]);
+	    console.log("base[i]=" + basic_vecs[i]);
+	    console.log("showBase[i]=" + showBase_vec[i]);
 	    for(var j=0; j<dim; j++){
-		output_vec[j] += factors[i] * (basic_vecs[i])[j];
+		output_vec[j] += factors[i] * showBase_vec[i] * (basic_vecs[i])[j];
 	    }
 	}
+
 	console.log("result=" + output_vec);
 	console.log(" ---- ");
 
