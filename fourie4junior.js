@@ -201,20 +201,52 @@ $(function() {
 
     // 受信ブロックのベクトルを描画する
     function drow_output_vec(){
-	var tmp;
+	var tmp, residue;
 	var j;
 	for(var col=1; col<=dim; col++){
 	    if ( output_vec[col-1] >= 0 ){
-		tmp = max_height - output_vec[col-1];
-		for(j=tmp+1; j<= max_height; j++){
+		//tmp = max_height - output_vec[col-1];
+		tmp = max_height - Math.ceil(output_vec[col-1]);
+		//for(j=tmp+1; j<= max_height; j++){
+		//    $("#panel4res" + j + '-' + col).attr("data-color-code", 1);
+		//}
+		j=tmp+1;
+		while( j<= max_height){ // 整数部分の描画
 		    $("#panel4res" + j + '-' + col).attr("data-color-code", 1);
+		    j++;
+		}
+
+		residue = Math.ceil(output_vec[col-1]) - output_vec[col-1];
+		if ( residue > 0 ){ // 小数部分の描画
+		    tmp = max_height - Math.ceil(output_vec[col-1]);
+		    j=tmp+1;
+		    $("#panel4res" + j + '-' + col).attr("data-color-code", 1);
+		    $("#panel4res" + j + '-' + col).attr("style", "height:" + 30*(1-residue) + "px; bottom:-" + 30*residue + "px;");
 		}
 	    }
 	    else{
-		tmp = max_height + (-1)*output_vec[col-1] + 1; // 0 の分を一つ加える
-		for(j=tmp-1; j>= max_height+1; j--){
+		//tmp = max_height + (-1)*output_vec[col-1] + 1; // 0 の分を一つ加える
+		tmp = max_height + (-1)*Math.floor(output_vec[col-1]) + 1; // 0 の分を一つ加える
+		//for(j=tmp-1; j>= max_height+1; j--){
+		//    $("#panel4res" + j + '-' + col).attr("data-color-code", 1);
+		//}
+		j=tmp-1;
+		while( j>= max_height+1){ // 整数部分の描画
 		    $("#panel4res" + j + '-' + col).attr("data-color-code", 1);
+		    j--;
 		}
+
+		residue = Math.floor(output_vec[col-1]) - output_vec[col-1];
+		console.log("residue="+residue);
+		if ( residue < 0 ){ // 小数部分の描画
+		    tmp = max_height + (-1)*Math.floor(output_vec[col-1]) + 1; // 0 の分を一つ加える
+		    j=tmp-1;
+		    console.log("j=" + j + ", tmp="+tmp);
+		    console.log("30*(1+residue)=" + 30*(1+residue) + ", 30*(-residue)="+30*(-residue));
+		    $("#panel4res" + j + '-' + col).attr("data-color-code", 1);
+		    $("#panel4res" + j + '-' + col).attr("style", "height:" + 30*(1+residue) + "px; top:0;");
+		}
+
 	    }
 	}
     }
