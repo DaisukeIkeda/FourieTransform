@@ -189,6 +189,21 @@ $(function() {
 	    }
 	}
 
+	//オリジナルのブロックと選択した規定を用いたブロック間の距離を計算
+	var dis = 0;           //距離
+	var v = 0;              //距離の二乗
+	var roundoff = 0;  //四捨五入
+	for(var i=0; i<dim; i++){
+	    v += (output_vec[i] - input_vec[i]) * (output_vec[i] - input_vec[i]);
+	}
+	dis = Math.sqrt(v);
+	console.log("distance=" + dis);
+	
+	dis = dis *100;
+	dis = Math.round(dis);
+	roundoff = dis / 100;
+	$("#roundoff").html(roundoff);  //四捨五入
+
 	console.log("result=" + output_vec);
 	console.log(" ---- ");
 

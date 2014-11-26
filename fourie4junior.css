@@ -271,3 +271,12 @@ body {
     top: 520px;
     left: 810px;
 }
+
+.distance {
+    display: inline-block;
+    position: absolute;
+    font-size: 24px;
+    text-align: center;
+    top: 520px;
+    left: 700px;
+}
