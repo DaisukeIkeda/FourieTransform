@@ -396,7 +396,7 @@ $(function() {
 	// 計算ボタン
         $(".calc-button").on('mousedown', on_calc_bases);
 
-	// クリアボタン
+	// 再構成ボタン
         $(".composite-button").on('touchstart', on_composite_vecs);
     }
     else {
@@ -431,7 +431,7 @@ $(function() {
 	// 計算ボタン
         $(".calc-button").on('mousedown', on_calc_bases);
 
-	// クリアボタン
+	// 再構成ボタン
         $(".composite-button").on('mousedown', on_composite_vecs);
     }
 
