@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Sending shapes of building blocs</title>
+    <link rel="stylesheet" href="fourie4junior.css" type="text/css" media="all">
+    <script src="jquery-1.9.0.js"></script>
+    <script src="fourie4junior.js"></script>
+  </head>
+  <body>
+    <div id="main">
+      <div id="vcentering">
+	<header>
+	  <div class="header" id="header1">Source</div>
+	  <div class="input_display">
+            <div id="input_display1"></div>
+            <div id="input_display2"></div>
+            <div id="input_display3"></div>
+            <div id="input_display4"></div>
+	  </div>
+	  <div class="header" id="header2">4 Basic Blocks</div>
+	  <div class="base_display">
+            <div id="base_display11"></div>
+            <div id="base_display12"></div>
+            <div id="base_display13"></div>
+            <div id="base_display14"></div>
+            <div id="base_display21"></div>
+            <div id="base_display22"></div>
+            <div id="base_display23"></div>
+            <div id="base_display24"></div>
+            <div id="base_display31"></div>
+            <div id="base_display32"></div>
+            <div id="base_display33"></div>
+            <div id="base_display34"></div>
+            <div id="base_display41"></div>
+            <div id="base_display42"></div>
+            <div id="base_display43"></div>
+            <div id="base_display44"></div>
+	  </div>
+	  <div class="header" id="header3">Received</div>
+	  <div class="output_display">
+            <div id="output_display1"></div>
+            <div id="output_display2"></div>
+            <div id="output_display3"></div>
+            <div id="output_display4"></div>
+	  </div>
+	</header>
+        <div class="hcentering">
+          <div class="board" id="inputboard">
+	  </div>
+          <div class="board2" id="board4base">
+	  </div>
+          <div class="board3" id="outputboard">
+	  </div>
+	</div>
+      </div>
+      <div id="footer">
+        <div id="cursor-panel">
+          <div id="up-button1" class="move-button">▲</div>
+          <div id="down-button1" class="move-button">▼</div>
+          <div id="up-button2" class="move-button">▲</div>
+          <div id="down-button2" class="move-button">▼</div>
+          <div id="up-button3" class="move-button">▲</div>
+          <div id="down-button3" class="move-button">▼</div>
+          <div id="up-button4" class="move-button">▲</div>
+          <div id="down-button4" class="move-button">▼</div>
+        </div>
+        <button class="calc-button">Calculate!</button>
+	<input class="showBase" id="showBase1" type="checkbox" name="showBase1" value="1" checked>
+	<input class="showBase" id="showBase2" type="checkbox" name="showBase2" value="1" checked>
+	<input class="showBase" id="showBase3" type="checkbox" name="showBase3" value="1" checked>
+	<input class="showBase" id="showBase4" type="checkbox" name="showBase4" value="1" checked>
+
+        <button class="composite-button">Composition</button>
+
+        <div class="distance">
+          <div id>distance</div>
+          <div id="roundoff"></div>
+        </div>
+
+       </div>
+    </div>
+  </body>
+</html>
