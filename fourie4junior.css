@@ -134,28 +134,28 @@ body {
     width: 480px
 }
 #base_display11, #base_display12, #base_display13, #base_display14{
-    font-size: 12px;
+    font-size: 24px;
     display: inline-block;
     position: relative;
     left: -80px;
     width: 23px;
 }
 #base_display21, #base_display22, #base_display23, #base_display24{
-    font-size: 12px;
+    font-size: 24px;
     display: inline-block;
     position: relative;
     left: -72px;
     width: 23px;
 }
 #base_display31, #base_display32, #base_display33, #base_display34{
-    font-size: 12px;
+    font-size: 24px;
     display: inline-block;
     position: relative;
     left: -66px;
     width: 23px;
 }
 #base_display41, #base_display42, #base_display43, #base_display44{
-    font-size: 12px;
+    font-size: 24px;
     display: inline-block;
     position: relative;
     left: -64px;

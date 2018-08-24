@@ -79,7 +79,11 @@ $(function() {
 	for(var i=0; i<dim; i++){
 	    for(var j=1; j<=dim; j++){
 		console.log("DEBUG: (i, j)=(" + i + ", " + j + "), factors[i]=" + factors[i] + ", basic_vecs[i][j-1]=" + basic_vecs[i][j-1]);
-		$("#base_display" + (i+1) + j ).html(factors[i]*basic_vecs[i][j-1]);
+		// display only their factors at j=1
+		if ( j == 1 )
+		    $("#base_display" + (i+1) + j ).html(factors[i]);
+		else 
+		    $("#base_display" + (i+1) + j ).html(" ");
 	    }
 	}
     }
