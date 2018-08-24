@@ -10,7 +10,7 @@ $(function() {
 		      [1, -1, 1, -1]];
     var factors = [1, 0, 0, 0]; //input_vec = \sum_i factors[i]*basic_vecs[i]
     var output_vec = [0, 0, 0, 0];
-    var showBase_vec = [1, 1, 1, 1]; // 基底ベクトルを用いるかどうかのフラグ
+    var showBase_vec = [1, 1, 1, 1]; // flag whether each basic bectors is used or not
 
     // http://stackoverflow.com/questions/4817029/whats-the-best-way-to-detect-a-touch-screen-device-using-javascript
     function is_touch_device() {
@@ -18,7 +18,7 @@ $(function() {
             || !!('onmsgesturechange' in window); // works on ie10
     }
 
-    // 送信ブロックのベクトルを変化させる
+    // change the vector of "source" block
     function change_input_vec(col, v){ // 1<=col<=dim, v = 1 or -1
 	var tmp;
 	if ( v == 1 && input_vec[col-1] < max_height ){
@@ -35,7 +35,7 @@ $(function() {
 	}
 	else if ( v == -1 && input_vec[col-1] > -max_height ){
 	    if ( input_vec[col-1] > 0 ){
-		tmp = max_height - input_vec[col-1] + 1; // 0 の分を一つ加える
+		tmp = max_height - input_vec[col-1] + 1; // "+1" for 0
 		$("#panel" + tmp + '-' + col).attr("data-color-code", 0);
 	    }
 	    else{
@@ -63,17 +63,17 @@ $(function() {
 	for(var i=0; i<dim; i++){
 	    console.log("input=" + input_vec);
 	    console.log("base=" + basic_vecs[i]);
-	    factors[i] = inner_product(input_vec, basic_vecs[i])/4;//TODO きちんとノルムを計算する
+	    factors[i] = inner_product(input_vec, basic_vecs[i])/4;//TODO take each norm into consider
 	    console.log("result=" + factors[i]);
 	}
 	console.log(" ---- ");
-	// 初期化
+	// initialization
 	$(".panel4base").each(function() {
             $(this).attr("data-color-code", 0);
 	    $(this).attr("style", "height:30px;");
         });
 
-	drow_bases();
+	draw_bases();
 
 	// change display number
 	for(var i=0; i<dim; i++){
@@ -88,29 +88,29 @@ $(function() {
 	}
     }
 
-    // 基本ブロックのベクトルを描画する
-    function drow_bases(){
+    // draw basic vectors
+    function draw_bases(){
 	var tmp, residue;
 	var j;
 	var tmp_vec = [0, 0, 0, 0];
 
-	for(var k=0; k<dim; k++){// 基本ブロック(基底ベクトル)に関するループ
+	for(var k=0; k<dim; k++){// loop for basic bectors
 	    for(var col=1; col<=dim; col++){
-		tmp_vec[col-1] = factors[k]*basic_vecs[k][col-1]; // k 基本ブロック×係数
+		tmp_vec[col-1] = factors[k]*basic_vecs[k][col-1]; // k-th basic vector mulplied with its factor
 
 		if ( col == dim ) console.log("tmp_vec=" + tmp_vec);
 
-		var tmp_col = col + k*dim; // パネル上の列番号(1〜16)
+		var tmp_col = col + k*dim; // column number on panel (1 to 16)
 		if ( tmp_vec[col-1] >= 0 ){
 		    tmp = max_height - Math.ceil(tmp_vec[col-1]);
 		    j=tmp+1;
-		    while( j<= max_height){ // 整数部分の描画
+		    while( j<= max_height){ // draw integer parts
 			$("#panel4base" + j + '-' + tmp_col).attr("data-color-code", 1);
 			j++;
 		    }
 
 		    residue = Math.ceil(tmp_vec[col-1]) - tmp_vec[col-1];
-		    if ( residue > 0 ){ // 小数部分の描画
+		    if ( residue > 0 ){ // draw fractional portion
 			tmp = max_height - Math.ceil(tmp_vec[col-1]);
 			j=tmp+1;
 			$("#panel4base" + j + '-' + tmp_col).attr("data-color-code", 1);
@@ -118,17 +118,17 @@ $(function() {
 		    }
 		}
 		else{
-		    tmp = max_height + (-1)*Math.floor(tmp_vec[col-1]) + 1; // 0 の分を一つ加える
+		    tmp = max_height + (-1)*Math.floor(tmp_vec[col-1]) + 1; // "+1" for 0
 		    j=tmp-1;
-		    while( j>= max_height+1){ // 整数部分の描画
+		    while( j>= max_height+1){ // draw integer parts
 			$("#panel4base" + j + '-' + tmp_col).attr("data-color-code", 1);
 			j--;
 		    }
 
 		    residue = Math.floor(tmp_vec[col-1]) - tmp_vec[col-1];
 		    console.log("residue="+residue);
-		    if ( residue < 0 ){ // 小数部分の描画
-			tmp = max_height + (-1)*Math.floor(tmp_vec[col-1]) + 1; // 0 の分を一つ加える
+		    if ( residue < 0 ){ // draw fractional portion
+			tmp = max_height + (-1)*Math.floor(tmp_vec[col-1]) + 1; // "+1" for 0
 			j=tmp-1;
 			console.log("j=" + j + ", tmp="+tmp);
 			console.log("30*(1+residue)=" + 30*(1+residue) + ", 30*(-residue)="+30*(-residue));
@@ -141,19 +141,19 @@ $(function() {
     }
 
     function on_composite_vecs(e) { // for both mouse and touch
-	// 初期化
+	// initialize
 	$(".panel4res").each(function() {
             $(this).attr("data-color-code", 0);
 	    $(this).attr("style", "height:30px;");
         });
 
-	// 出力ベクトルの初期化
+	// initialize received vector
 	for(var i=0; i<dim; i++)
 	    output_vec[i]=0;
 
-	// 用いる基底ベクトルのオン/オフ(チェックボックス)
+	// checkbox to show a basic vector is used or not
 	for(var i=0; i<dim; i++){
-	    // TODO i を使って、1 回で済ませたい
+	    // TODO write in a simpler way, using i
 	    //console.log("DARUMA2" + $("#showBase" + (i+1) + ":checked"));
 	    //if ( $("#showBase" + (i+1) + ":checked") == "1"){ 
 	    //showBase_vec[i]=1;
@@ -193,10 +193,10 @@ $(function() {
 	    }
 	}
 
-	//オリジナルのブロックと選択した規定を用いたブロック間の距離を計算
-	var dis = 0;           //距離
-	var v = 0;              //距離の二乗
-	var roundoff = 0;  //四捨五入
+	// calculate the distance of the vector composed of the selected elements with the original source one
+	var dis = 0;           //distance
+	var v = 0;              // square of the distance
+	var roundoff = 0;  //round
 	for(var i=0; i<dim; i++){
 	    v += (output_vec[i] - input_vec[i]) * (output_vec[i] - input_vec[i]);
 	}
@@ -206,20 +206,20 @@ $(function() {
 	dis = dis *100;
 	dis = Math.round(dis);
 	roundoff = dis / 100;
-	$("#roundoff").html(roundoff);  //四捨五入
+	$("#roundoff").html(roundoff);  // round
 
 	console.log("result=" + output_vec);
 	console.log(" ---- ");
 
-	drow_output_vec();
+	draw_output_vec();
 	for(var i=1; i<=dim; i++){
 	    // change display number
 	    $("#output_display" + i).html(output_vec[i-1]);
 	}
     }
 
-    // 受信ブロックのベクトルを描画する
-    function drow_output_vec(){
+    // draw "received" vector
+    function draw_output_vec(){
 	var tmp, residue;
 	var j;
 	for(var col=1; col<=dim; col++){
@@ -230,13 +230,13 @@ $(function() {
 		//    $("#panel4res" + j + '-' + col).attr("data-color-code", 1);
 		//}
 		j=tmp+1;
-		while( j<= max_height){ // 整数部分の描画
+		while( j<= max_height){ // draw integer parts
 		    $("#panel4res" + j + '-' + col).attr("data-color-code", 1);
 		    j++;
 		}
 
 		residue = Math.ceil(output_vec[col-1]) - output_vec[col-1];
-		if ( residue > 0 ){ // 小数部分の描画
+		if ( residue > 0 ){ // draw fractional portion
 		    tmp = max_height - Math.ceil(output_vec[col-1]);
 		    j=tmp+1;
 		    $("#panel4res" + j + '-' + col).attr("data-color-code", 1);
@@ -244,21 +244,21 @@ $(function() {
 		}
 	    }
 	    else{
-		//tmp = max_height + (-1)*output_vec[col-1] + 1; // 0 の分を一つ加える
-		tmp = max_height + (-1)*Math.floor(output_vec[col-1]) + 1; // 0 の分を一つ加える
+		//tmp = max_height + (-1)*output_vec[col-1] + 1; // "+1" for 0
+		tmp = max_height + (-1)*Math.floor(output_vec[col-1]) + 1; // "+1" for 0
 		//for(j=tmp-1; j>= max_height+1; j--){
 		//    $("#panel4res" + j + '-' + col).attr("data-color-code", 1);
 		//}
 		j=tmp-1;
-		while( j>= max_height+1){ // 整数部分の描画
+		while( j>= max_height+1){ // draw integer parts
 		    $("#panel4res" + j + '-' + col).attr("data-color-code", 1);
 		    j--;
 		}
 
 		residue = Math.floor(output_vec[col-1]) - output_vec[col-1];
 		console.log("residue="+residue);
-		if ( residue < 0 ){ // 小数部分の描画
-		    tmp = max_height + (-1)*Math.floor(output_vec[col-1]) + 1; // 0 の分を一つ加える
+		if ( residue < 0 ){ // draw fractional portion
+		    tmp = max_height + (-1)*Math.floor(output_vec[col-1]) + 1; // "+1" for 0
 		    j=tmp-1;
 		    console.log("j=" + j + ", tmp="+tmp);
 		    console.log("30*(1+residue)=" + 30*(1+residue) + ", 30*(-residue)="+30*(-residue));
@@ -285,7 +285,7 @@ $(function() {
 		panel.appendTo(cell);
 		cell.appendTo(row);
 
-		// 横軸の描画
+		// draw the horizontal axis
 		if ( i == max_height )
 		    $('<style>#panel' + i + '-' + j + '{ border-bottom: 2px solid black}</style>').appendTo('head');
             }
@@ -309,7 +309,7 @@ $(function() {
 		panel.appendTo(cell);
 		cell.appendTo(row);
 
-		if ( i == max_height ){ // 横軸と縦軸の描画
+		if ( i == max_height ){ // draw the horizontal and vertical axes
 		    if ( j % dim == 0 )
 			$('<style>#panel4base' + i + '-' + j + '{ border-bottom: 2px solid black; border-right: 1px solid black}</style>').appendTo('head');
 		    else
@@ -339,7 +339,7 @@ $(function() {
 		panel.appendTo(cell);
 		cell.appendTo(row);
 
-		// 横軸の描画
+		// draw the horizontal axis
 		if ( i == 8 )
 		    $('<style>#panel4res' + i + '-' + j + '{ border-bottom: 2px solid black}</style>').appendTo('head');
             }
@@ -349,9 +349,9 @@ $(function() {
     }
 
     function initialize_inputboard(){
-	for(var j = 1; j <= dim; j++){ // j は横軸
+	for(var j = 1; j <= dim; j++){ // j is for the horizontal axis
 	    // we assume that initially input_vec[i] > 0
-	    for(var i = max_height; i> max_height - input_vec[j-1]; i--){ // max_height(=8) が原点
+	    for(var i = max_height; i> max_height - input_vec[j-1]; i--){ // max_height(=8) is at the origin
 		$("#panel" + i + '-' + j ).attr("data-color-code", 1);
 	    }
 
@@ -360,13 +360,13 @@ $(function() {
 	}
     }
 
-    // ボードの描画
+    // draw boards
     new_inputboard();
     new_bases();
     new_outputboard();
     initialize_inputboard();
 
-    /* 軸の番号 */
+    /* num of axis */
     var num_str;
     for (var i = 1; i <= 16; ++i) {
         num_str = (i <= max_height ? '' + max_height - i +1 : '' + max_height - i);
@@ -384,7 +384,7 @@ $(function() {
     }
 
     if (is_touch_device()) {
-	// 増ボタン
+	// increase button
         $("#up-button1").on('touchstart', function(){
 	    return change_input_vec(1, 1);
 	});
@@ -398,7 +398,7 @@ $(function() {
 	    return change_input_vec(4, 1);
 	});
 
-	// 減ボタン
+	// decrease button
         $("#down-button1").on('touchstart', function(){
 	    return change_input_vec(1, -1);
 	});
@@ -412,14 +412,14 @@ $(function() {
 	    return change_input_vec(4, -1);
 	});
 
-	// 計算ボタン
+	// calculate button
         $(".calc-button").on('mousedown', on_calc_bases);
 
-	// 再構成ボタン
+	// composition button
         $(".composite-button").on('touchstart', on_composite_vecs);
     }
     else {
-	// 増ボタン
+	// increase button
         $("#up-button1").on('click', function(){
 	    return change_input_vec(1, 1);
 	});
@@ -433,7 +433,7 @@ $(function() {
 	    return change_input_vec(4, 1);
 	});
 
-	// 減ボタン
+	// decrease button
         $("#down-button1").on('click', function(){
 	    return change_input_vec(1, -1);
 	});
@@ -447,10 +447,10 @@ $(function() {
 	    return change_input_vec(4, -1);
 	});
 
-	// 計算ボタン
+	// calculate button
         $(".calc-button").on('mousedown', on_calc_bases);
 
-	// 再構成ボタン
+	// composition button
         $(".composite-button").on('mousedown', on_composite_vecs);
     }
 
