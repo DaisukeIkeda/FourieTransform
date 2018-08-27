@@ -169,7 +169,7 @@ body {
     width: 120px
 }
 #output_display1, #output_display2, #output_display3, #output_display4{
-    font-size: 12px;
+    font-size: 24px;
     display: inline-block;
     position: relative;
     left: 470px;
