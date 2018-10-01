@@ -12,6 +12,32 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
+#main {
+    /* cover the entire screen */
+    display: flex;
+    position: relative;
+    width: 840px;  /* total width: 4 * 30px * 2 + 16 * 30px + 60px (margine) * 2 = 240 + 480 + 80 = 840*/
+    /*height: 100%;*/
+    height: 640px; /* 480px = 30px * 16: ベクトル部分*/
+    overflow: hidden; /* はみ出した部分を表示しない */
+}
+.vpanel { /* virtical panel includes #left-, #center-, and #right- panels */
+    display: block;
+    border: 4pt solid red;
+    height: 100%;
+}
+#left-panel {
+    width: 160px; /* 40(縦の数字分) + 120(=30*4(ベクトル部分))*/
+    left: 20px;
+}
+#center-panel {
+    width: 520px; /* 40(縦の数字分) + 480(=30*16: ベクトル部分) */
+    left: 100px;
+}
+#right-panel{
+    width: 160px; /* 40(縦の数字分) + 120(=30*4: ベクトル部分)*/
+    left: 0px;
+}
 .cell { /* 1 マスを表すスタイル */
     width: 30px;
     height: 30px;
@@ -20,12 +46,14 @@
     /*border: 1px solid green;*/
 }
 /* Panels are 30 pixels by 40 pixels including its borders. */
-.panel, .panel4base, .panel4res {
+.panel, .panel4base, .panel4res { /* 送信、基本、受信ブロックの各マス */
+    /* 本当は受信ブロックのベクトル部分だけ青の背景にしたいが panel4res が効かない */
     border: 1px solid orange;
     position: relative;
     background-color: white;
-    width: 30px;
+    width: 30px; /* Panels are 30 pixels by 40 pixels including its borders. */
     height: 30px;
+    left: 30px;
     /* centering the content. */
     display: table-cell;
     text-align: center;
@@ -34,67 +62,31 @@
 .panel4res {
     border: 1px solid blue;
 }
-body {
-    /* cover the entire screen */
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden; /* はみ出した部分を表示しない */
-}
-#main {
-    position: absolute;
-    width: 100%;
-    top: 60px;
-    height: 520px;
-}
-.hcentering {
-  /* border: 4pt solid orange;*/
-    /*position: relative;*/
-    position: absolute; /* 3 つを直接座標で配置する */
-    z-index: 10;
-    height: 100%;
-    /* center the content horizontally */
-    width: 840px;  /* total width: 4 * 30px * 2 + 16 * 30px + 60px (margine) * 2 = 240 + 480 + 80 = 840*/
-    margin-left: auto;
-    margin-right: auto;
-}
-#vcentering {
-  /* border: 4pt solid yellow;*/
-    width: 60%;
-    /* center the content vertically */
-    position: absolute;
-    right: 60px;
-    height: 480px; /* 640px = 30px * 16*/
-    top: 50%;
-    margin-top: -240px;
-}
-.board, .board2, .board3 {
+.board { /* 送信、基本、受信ブロックのベクトル部分(マスの総体) */
     /* put them at the same position with the same size */
-    position: absolute;
+    position: relative;
+    left: 40px; /* 軸の数字の分だけ右に */
     /*width: 100%;*/
-    width: 120px;
-    height: 100%;
-    box-sizing: content-box; /* border-box だと、周りの太い線が現れない */
-    border: 4px solid black;
-    /* 以下がオリジナルの board 部分*/
-    margin: auto;
+    /*box-sizing: content-box; border-box だと、周りの太い線が現れない */
+    width: 120px; /* 120=30*4*/
+    right: 0;
     font-size: 24px;
     font-weight: bold;
 }
-.board2 {
-    width: 480px;
+#input-board{
+    border: 4px solid yellow;
+    /*top: 0;
+    left: -260px;*/
 }
-#inputboard{
-    top: 0;
-    left: -260px;
+#base-board{
+    border: 4px solid green;
+    width: 480px; /* 120=30*4*4 */
+    /*top: 0;
+      left: 80px;*/
 }
-#board4base{
-    top: 0;
-    left: -80px;
-}
-#outputboard{
-    top: 0;
-    left: 460px;
+#output-board{
+    /*top: 0;*/
+    border: 4px solid red;
 }
 .row:before{ /* 縦の数字部分 */
     position: absolute;
@@ -114,171 +106,146 @@ body {
     height: 30px;
 }
 .input_display{
-    display: inline-block;
-    position: absolute;
+    position: relative;
+    text-align: right;
     font-size: 24px;
-    top: -25px;
-    width:120px;
+    width:120px; /* 30 x 4 */
 }
 #input_display1, #input_display2, #input_display3, #input_display4{
     display: inline-block;
     position: relative;
-    left: -246px;
+    /*left: -246px;*/
     width: 23px;
 }
 .base_display{
-    display: inline-block;
-    position: absolute;
+    position: relative;
     font-size: 24px;
-    top: -25px;
+    /*top: -25px;*/
     width: 480px
+    height: 24px;
 }
 #base_display11, #base_display12, #base_display13, #base_display14{
     font-size: 24px;
     display: inline-block;
     position: relative;
-    left: -80px;
+    /*left: -80px;*/
     width: 23px;
 }
 #base_display21, #base_display22, #base_display23, #base_display24{
     font-size: 24px;
     display: inline-block;
     position: relative;
-    left: -72px;
+    /*left: -72px;*/
     width: 23px;
 }
 #base_display31, #base_display32, #base_display33, #base_display34{
     font-size: 24px;
     display: inline-block;
     position: relative;
-    left: -66px;
+    /*left: -66px;*/
     width: 23px;
 }
 #base_display41, #base_display42, #base_display43, #base_display44{
     font-size: 24px;
     display: inline-block;
     position: relative;
-    left: -64px;
+    /*left: -64px;*/
     width: 23px;
 }
 .output_display{
     display: inline-block;
-    position: absolute;
+    position: relative;
     font-size: 24px;
-    top: -25px;
+    /*top: -25px;*/
     width: 120px
 }
 #output_display1, #output_display2, #output_display3, #output_display4{
-    font-size: 24px;
+    font-size: 18px;
     display: inline-block;
     position: relative;
-    left: 470px;
+    /*left: 465px;*/
     width: 23px;
 }
 .header {
-    display: inline-block;
-    position: absolute;
     font-size: 24px;
     text-align: center;
-    top: -60px;
 }
 #input-header{
     text-align: left;
-    left: -260px;
-}
-#base-header{
-    left: -80px;
 }
 #output-header{
     text-align: right;
-    left: 460px;
 }
-#cursor-panel{
-    position: absolute;
-    top: 520px;
-    left: 90px;
-    width: 120px;
-    height: 60px;
-}
-.move-button {
-    position: absolute;
-    width: 30px;
-    font-size: 24px;
+#cursor-panel{ /* ▲と▼を格納する仮想のボックス*/
+    position: relative;
+    display:flex;
 }
 #up-button1 {
-    left: 0;
-    top: 0;
+    position: absolute;
+    font-size: 24px;
+    left: 45px;
+    top: 0px;
 }
 #down-button1 {
-    left: 0;
-    bottom: 0;
+    position: absolute;
+    font-size: 24px;
+    left: 45px;
+    top: 20px;
 }
 #up-button2 {
-    left: 30px;
-    top: 0;
+    position: absolute;
+    font-size: 24px;
+    left: 80px;
+    top: 0px;
 }
 #down-button2 {
-    left: 30px;
-    bottom: 0;
+    position: absolute;
+    font-size: 24px;
+    left: 80px;
+    top: 20px;
 }
 #up-button3 {
-    left: 60px;
-    top: 0;
+    position: absolute;
+    font-size: 24px;
+    left: 115px;
+    top: 0px;
 }
 #down-button3 {
-    left: 60px;
-    bottom: 0;
+    position: absolute;
+    font-size: 24px;
+    left: 115px;
+    top: 20px;
 }
 #up-button4 {
-    left: 90px;
-    top: 0;
+    position: absolute;
+    font-size: 24px;
+    left: 140px;
+    top: 0px;
 }
 #down-button4 {
-    left: 90px;
-    bottom: 0;
+    position: absolute;
+    font-size: 24px;
+    left: 140px;
+    top: 20px;
 }
 .calc-button {
-    display: inline-block;
     position: absolute;
     font-size: 24px;
-    text-align: center;
-    top: 520px;
-    left: 270px;
+    /*left: -100px;
+    top: 510px;*/
 }
 .showBase {
-    display: inline-block;
-    position: absolute;
+    position: relative;
     font-size: 24px;
-    text-align: center;
-    top: 520px;
-    left: 360px;
+    left: 100px;
 }
-#showBase1 {
+.distance {
+    position: relative;
+    font-size: 18px;
     left: 400px;
 }
-#showBase2 {
-    left: 430px;
-}
-#showBase3 {
-    left: 460px;
-}
-#showBase4 {
-    left: 490px;
-}
 .composite-button {
-    display: inline-block;
-    position: absolute;
+    position: relative;
     font-size: 24px;
-    text-align: center;
-    top: 520px;
-    left: 810px;
 }
 
-.distance {
-    display: inline-block;
-    position: absolute;
-    font-size: 24px;
-    text-align: center;
-    top: 520px;
-    left: 700px;
-}

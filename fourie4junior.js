@@ -290,7 +290,7 @@ $(function() {
 		    $('<style>#panel' + i + '-' + j + '{ border-bottom: 2px solid black}</style>').appendTo('head');
             }
             row.appendTo(row_holder);
-            row_holder.appendTo('.board');
+            row_holder.appendTo('#input-board');
 	}
     }
 
@@ -320,7 +320,7 @@ $(function() {
 
             }
             row.appendTo(row_holder);
-            row_holder.appendTo('.board2');
+            row_holder.appendTo('#base-board');
 	}
     }
 
@@ -344,7 +344,7 @@ $(function() {
 		    $('<style>#panel4res' + i + '-' + j + '{ border-bottom: 2px solid black}</style>').appendTo('head');
             }
             row.appendTo(row_holder);
-            row_holder.appendTo('.board3');
+            row_holder.appendTo('#output-board');
 	}
     }
 

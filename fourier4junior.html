@@ -11,52 +11,18 @@
   </head>
   <body>
     <div id="main">
-      <div id="vcentering">
-	<header>
-	  <div class="header" id="input-header">送信ブロック</div>
-	  <div class="input_display">
-            <div id="input_display1"></div>
-            <div id="input_display2"></div>
-            <div id="input_display3"></div>
-            <div id="input_display4"></div>
-	  </div>
-	  <div class="header" id="base-header">基本ブロック</div>
-	  <div class="base_display">
-            <div id="base_display11"></div>
-            <div id="base_display12"></div>
-            <div id="base_display13"></div>
-            <div id="base_display14"></div>
-            <div id="base_display21"></div>
-            <div id="base_display22"></div>
-            <div id="base_display23"></div>
-            <div id="base_display24"></div>
-            <div id="base_display31"></div>
-            <div id="base_display32"></div>
-            <div id="base_display33"></div>
-            <div id="base_display34"></div>
-            <div id="base_display41"></div>
-            <div id="base_display42"></div>
-            <div id="base_display43"></div>
-            <div id="base_display44"></div>
-	  </div>
-	  <div class="header" id="output-header">受信ブロック</div>
-	  <div class="output_display">
-            <div id="output_display1"></div>
-            <div id="output_display2"></div>
-            <div id="output_display3"></div>
-            <div id="output_display4"></div>
-	  </div>
-	</header>
+      <div class="vpanel" id="left-panel">
+	<div class="header" id="input-header">送信ブロック</div>
+	<div class="input_display"> <!-- 成分表示の数字 -->
+          <div id="input_display1"></div>
+          <div id="input_display2"></div>
+          <div id="input_display3"></div>
+          <div id="input_display4"></div>
+	</div>
+	<div class="board" id="input-board">
+	</div>
 
-          <div class="board" id="inputboard">
-	  </div>
-          <div class="board2" id="board4base">
-	  </div>
-          <div class="board3" id="outputboard">
-	  </div>
-
-      </div>
-        <div id="cursor-panel">
+	<div id="cursor-panel"> <!-- ▲と▼--> 
           <div id="up-button1" class="move-button">▲</div>
           <div id="down-button1" class="move-button">▼</div>
           <div id="up-button2" class="move-button">▲</div>
@@ -66,19 +32,60 @@
           <div id="up-button4" class="move-button">▲</div>
           <div id="down-button4" class="move-button">▼</div>
         </div>
-        <button class="calc-button">計算！</button>
-	<input class="showBase" id="showBase1" type="checkbox" name="showBase1" value="1" checked>
-	<input class="showBase" id="showBase2" type="checkbox" name="showBase2" value="1" checked>
-	<input class="showBase" id="showBase3" type="checkbox" name="showBase3" value="1" checked>
-	<input class="showBase" id="showBase4" type="checkbox" name="showBase4" value="1" checked>
 
-        <button class="composite-button">再構成</button>
+      </div> <!-- left-panel -->
+
+      <div class="vpanel" id="center-panel">
+	<div class="header" id="base-header">基本ブロック</div>
+	<div class="base_display"> <!-- 成分表示の数字 -->
+          <div id="base_display11"></div>
+          <div id="base_display12"></div>
+          <div id="base_display13"></div>
+          <div id="base_display14"></div>
+          <div id="base_display21"></div>
+          <div id="base_display22"></div>
+          <div id="base_display23"></div>
+          <div id="base_display24"></div>
+          <div id="base_display31"></div>
+          <div id="base_display32"></div>
+          <div id="base_display33"></div>
+          <div id="base_display34"></div>
+          <div id="base_display41"></div>
+          <div id="base_display42"></div>
+          <div id="base_display43"></div>
+          <div id="base_display44"></div>
+	</div>
+
+        <div class="board" id="base-board">
+	</div>
+
+	<button class="calc-button">計算！</button>
+	
+	<div class="showBase">
+	  <input class="showBase" id="showBase1" type="checkbox" name="showBase1" value="1" checked>
+	  <input class="showBase" id="showBase2" type="checkbox" name="showBase2" value="1" checked>
+	  <input class="showBase" id="showBase3" type="checkbox" name="showBase3" value="1" checked>
+	  <input class="showBase" id="showBase4" type="checkbox" name="showBase4" value="1" checked>
+	</div>
 
         <div class="distance">
           <div id>距離</div>
           <div id="roundoff"></div>
         </div>
+      </div> <!-- center-panel -->
 
+      <div class="vpanel" id="right-panel">
+	<div class="header" id="output-header">受信ブロック</div>
+	<div class="output_display">
+          <div id="output_display1"></div>
+          <div id="output_display2"></div>
+          <div id="output_display3"></div>
+          <div id="output_display4"></div>
+	</div>
+        <div class="board" id="output-board">
+	</div>
+        <button class="composite-button">再構成</button>
+      </div> <!-- right-panel -->
     </div>
   </body>
 </html>
