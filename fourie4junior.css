@@ -182,13 +182,15 @@ body {
     text-align: center;
     top: -60px;
 }
-#header1{
+#input-header{
+    text-align: left;
     left: -260px;
 }
-#header2{
+#base-header{
     left: -80px;
 }
-#header3{
+#output-header{
+    text-align: right;
     left: 460px;
 }
 #cursor-panel{
