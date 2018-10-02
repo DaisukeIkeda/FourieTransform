@@ -45,7 +45,6 @@
   /**/
     /*border: 1px solid green;*/
 }
-/* Panels are 30 pixels by 40 pixels including its borders. */
 .panel, .panel4base, .panel4res { /* 送信、基本、受信ブロックの各マス */
     /* 本当は受信ブロックのベクトル部分だけ青の背景にしたいが panel4res が効かない */
     border: 1px solid orange;
