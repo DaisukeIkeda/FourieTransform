@@ -16,26 +16,26 @@
     /* cover the entire screen */
     display: flex;
     position: relative;
-    width: 840px;  /* total width: 4 * 30px * 2 + 16 * 30px + 60px (margine) * 2 = 240 + 480 + 80 = 840*/
+    width: 900px;  /* left-, right-panels: 180x2=360, center-panel: 540*/
     /*height: 100%;*/
     height: 640px; /* 480px = 30px * 16: ベクトル部分*/
     overflow: hidden; /* はみ出した部分を表示しない */
 }
 .vpanel { /* virtical panel includes #left-, #center-, and #right- panels */
     display: block;
-    border: 4pt solid red;
+    border: 4pt solid red; /* for debug */
     height: 100%;
 }
 #left-panel {
-    width: 160px; /* 40(縦の数字分) + 120(=30*4(ベクトル部分))*/
+    width: 180px; /* 160 = 40(縦の数字分) + 120(=30*4(ベクトル部分))*/
     left: 20px;
 }
 #center-panel {
-    width: 520px; /* 40(縦の数字分) + 480(=30*16: ベクトル部分) */
+    width: 540px; /* 520 = 40(縦の数字分) + 480(=30*16: ベクトル部分) */
     left: 100px;
 }
 #right-panel{
-    width: 160px; /* 40(縦の数字分) + 120(=30*4: ベクトル部分)*/
+    width: 180px; /* 160 = 40(縦の数字分) + 120(=30*4(ベクトル部分))*/
     left: 0px;
 }
 .cell { /* 1 マスを表すスタイル */
@@ -80,7 +80,6 @@
       left: 80px;*/
 }
 #output-board{
-    /*top: 0;*/
     border: 4px solid red;
 }
 .vaxis{ /* 縦の数字部分(8〜-8まで) */
@@ -141,13 +140,19 @@
     position: relative;
     text-align: right;
     font-size: 12px;
+    font-weight: bold;
     width:120px; /* 30 x 4 */
+    height: 36px; /* this is necessary because the font size of output_display is smaller */
     margin: auto;
     padding: auto;
 }
 #output_display1, #output_display2, #output_display3, #output_display4{
+    position: relative;
     display: inline-block;
     width: 23px;
+}
+#output_display2, #output_display4{
+    top: 12px; /* 小数が重ならないように互い違いに表示*/
 }
 .header {
     font-size: 24px;
