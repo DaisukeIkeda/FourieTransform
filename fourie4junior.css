@@ -16,7 +16,7 @@
     /* cover the entire screen */
     display: flex;
     position: relative;
-    width: 840px;  /* total width: 4 * 30px * 2 + 16 * 30px + 60px (margine) * 2 = 240 + 480 + 80 = 840*/
+    width: 960px;  /* left-, right-panels: 200 x 2, center-panel: 560 */
     /*height: 100%;*/
     height: 640px; /* 480px = 30px * 16: ベクトル部分*/
     overflow: hidden; /* はみ出した部分を表示しない */
@@ -27,15 +27,15 @@
     height: 100%;
 }
 #left-panel {
-    width: 160px; /* 40(縦の数字分) + 120(=30*4(ベクトル部分))*/
+    width: 200px; /* 160 = 40(縦の数字分) + 120(=30*4(ベクトル部分))*/
     left: 20px;
 }
 #center-panel {
-    width: 520px; /* 40(縦の数字分) + 480(=30*16: ベクトル部分) */
+    width: 560px; /* 520 = 40(縦の数字分) + 480(=30*16: ベクトル部分) */
     left: 100px;
 }
 #right-panel{
-    width: 160px; /* 40(縦の数字分) + 120(=30*4: ベクトル部分)*/
+    width: 200px; /* 160 = 40(縦の数字分) + 120(=30*4(ベクトル部分))*/
     left: 0px;
 }
 .cell { /* 1 マスを表すスタイル */
@@ -47,7 +47,6 @@
     background-color: white;
     width: 30px; /* Panels are 30 pixels by 40 pixels including its borders. */
     height: 30px;
-    left: 30px;
     /* centering the content. */
     text-align: center;
     vertical-align: middle;
