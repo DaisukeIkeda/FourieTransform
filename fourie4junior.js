@@ -366,14 +366,6 @@ $(function() {
     new_outputboard();
     initialize_inputboard();
 
-    /* num of axis */
-    var num_str;
-    for (var i = 1; i <= 16; ++i) {
-        num_str = (i <= max_height ? '' + max_height - i +1 : '' + max_height - i);
-        $('<style>#row' + i + ':before { content: "' + num_str + '"; }</style>').appendTo('head');
-        $('<style>#row4res' + i + ':before { content: "' + num_str + '"; }</style>').appendTo('head');
-    }
-
     if (is_touch_device()) {
         // disable the overscroll effect on touch-capable environments.
 	// http://www.html5rocks.com/en/mobile/touch/
@@ -455,7 +447,7 @@ $(function() {
     }
 
     // style for black&white panels
-    i=0;
+    var i=0;
     $("<style>.panel[data-color-code=\"" + i + "\"] { background-color: white; }</style>").appendTo("html > head");
     $("<style>.panel4base[data-color-code=\"" + i + "\"] { background-color: white; }</style>").appendTo("html > head");
     $("<style>.panel4res[data-color-code=\"" + i + "\"] { background-color: white; }</style>").appendTo("html > head");
