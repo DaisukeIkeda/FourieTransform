@@ -39,22 +39,16 @@
     left: 0px;
 }
 .cell { /* 1 マスを表すスタイル */
-    width: 30px;
-    height: 30px;
     display: inline-block;
-  /**/
-    /*border: 1px solid green;*/
 }
 .panel, .panel4base, .panel4res { /* 送信、基本、受信ブロックの各マス */
     /* 本当は受信ブロックのベクトル部分だけ青の背景にしたいが panel4res が効かない */
     border: 1px solid orange;
-    position: relative;
     background-color: white;
     width: 30px; /* Panels are 30 pixels by 40 pixels including its borders. */
     height: 30px;
     left: 30px;
     /* centering the content. */
-    display: table-cell;
     text-align: center;
     vertical-align: middle;
 }
