@@ -143,6 +143,7 @@
     font-weight: bold;
     width:120px; /* 30 x 4 */
     height: 36px; /* this is necessary because the font size of output_display is smaller */
+    top: 8px; /* close to output-board*/
     margin: auto;
     padding: auto;
 }
