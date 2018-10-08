@@ -23,7 +23,7 @@
 }
 .vpanel { /* virtical panel includes #left-, #center-, and #right- panels */
     display: block;
-    border: 4pt solid red; /* for debug */
+    /*border: 4pt solid red; for debug */
     height: 100%;
 }
 #left-panel {
