@@ -161,6 +161,22 @@
 #output-header{
     text-align: right;
 }
+.footer{
+    display:flex;
+    position: relative;
+    height:80px; /* 全体の高さ 640 - 36 - 36 - 488 = 640 - 560 = 80 */
+    width:100%;
+}
+#input_footer{
+    text-align: right;
+    /*border: 4pt solid green; for debug */
+}
+#base_footer{
+    /*border: 4pt solid green; for debug */
+}
+#output_footer{
+    /*border: 4pt solid yellow; for debug */
+}
 #cursor-panel{ /* ▲と▼を格納する仮想のボックス*/
     position: relative;
     display:flex;
@@ -180,57 +196,78 @@
 #up-button2 {
     position: absolute;
     font-size: 24px;
-    left: 80px;
+    left: 75px;
     top: 0px;
 }
 #down-button2 {
     position: absolute;
     font-size: 24px;
-    left: 80px;
+    left: 75px;
     top: 20px;
 }
 #up-button3 {
     position: absolute;
     font-size: 24px;
-    left: 115px;
+    left: 105px;
     top: 0px;
 }
 #down-button3 {
     position: absolute;
     font-size: 24px;
-    left: 115px;
+    left: 105px;
     top: 20px;
 }
 #up-button4 {
     position: absolute;
     font-size: 24px;
-    left: 140px;
+    left: 135px;
     top: 0px;
 }
 #down-button4 {
     position: absolute;
     font-size: 24px;
-    left: 140px;
+    left: 135px;
     top: 20px;
 }
 .calc-button {
-    position: absolute;
+    position: relative;
     font-size: 24px;
-    /*left: -100px;
-    top: 510px;*/
+    left: 38px;
+    top:30px;
+    height:40px;
 }
 .showBase {
+    display:flex;
     position: relative;
     font-size: 24px;
-    left: 100px;
+}
+#showBase1 {
+    left:60px;
+}
+#showBase2 {
+    left:164px;
+}
+#showBase3 {
+    left:272px;
+}
+#showBase4 {
+    left:372px;
 }
 .distance {
+    display: flex;
     position: relative;
     font-size: 18px;
-    left: 400px;
+    top:0px;
+    left:20px;
+}
+.runoff {
+    position: relative;
+    top: 0px;
 }
 .composite-button {
     position: relative;
     font-size: 24px;
+    top:0px;
+    height:40px;
 }
 
