@@ -39,18 +39,18 @@
 	</div>
 	<div class="board" id="input-board">
 	</div>
-
-	<div id="cursor-panel"> <!-- ▲と▼--> 
-          <div id="up-button1" class="move-button">▲</div>
-          <div id="down-button1" class="move-button">▼</div>
-          <div id="up-button2" class="move-button">▲</div>
-          <div id="down-button2" class="move-button">▼</div>
-          <div id="up-button3" class="move-button">▲</div>
-          <div id="down-button3" class="move-button">▼</div>
-          <div id="up-button4" class="move-button">▲</div>
-          <div id="down-button4" class="move-button">▼</div>
-        </div>
-
+	<div class="footer" id="input_footer">
+	  <div id="cursor-panel"> <!-- ▲と▼--> 
+            <div id="up-button1" class="move-button">▲</div>
+            <div id="down-button1" class="move-button">▼</div>
+            <div id="up-button2" class="move-button">▲</div>
+            <div id="down-button2" class="move-button">▼</div>
+            <div id="up-button3" class="move-button">▲</div>
+            <div id="down-button3" class="move-button">▼</div>
+            <div id="up-button4" class="move-button">▲</div>
+            <div id="down-button4" class="move-button">▼</div>
+          </div>
+	</div>
       </div> <!-- left-panel -->
 
       <div class="vpanel" id="center-panel">
@@ -96,19 +96,17 @@
         <div class="board" id="base-board">
 	</div>
 
-	<button class="calc-button">計算！</button>
+	<div class="footer" id="base_footer">
+	  <button class="calc-button">計算！</button>
 	
-	<div class="showBase">
-	  <input class="showBase" id="showBase1" type="checkbox" name="showBase1" value="1" checked>
-	  <input class="showBase" id="showBase2" type="checkbox" name="showBase2" value="1" checked>
-	  <input class="showBase" id="showBase3" type="checkbox" name="showBase3" value="1" checked>
-	  <input class="showBase" id="showBase4" type="checkbox" name="showBase4" value="1" checked>
+	  <div class="showBase">
+	    <input class="showBase" id="showBase1" type="checkbox" name="showBase1" value="1" checked>
+	    <input class="showBase" id="showBase2" type="checkbox" name="showBase2" value="1" checked>
+	    <input class="showBase" id="showBase3" type="checkbox" name="showBase3" value="1" checked>
+	    <input class="showBase" id="showBase4" type="checkbox" name="showBase4" value="1" checked>
+	  </div>
 	</div>
 
-        <div class="distance">
-          <div id>距離</div>
-          <div id="roundoff"></div>
-        </div>
       </div> <!-- center-panel -->
 
       <div class="vpanel" id="right-panel">
@@ -139,7 +137,13 @@
 	</div>
         <div class="board" id="output-board">
 	</div>
-        <button class="composite-button">再構成</button>
+	<div class="footer" id="output_footer">
+          <button class="composite-button">再構成</button>
+	  <div class="distance">
+            <div id>距離</div>
+            <div id="roundoff"></div>
+          </div>
+	</div>
       </div> <!-- right-panel -->
     </div>
   </body>
