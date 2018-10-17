@@ -242,19 +242,29 @@
     display:flex;
     position: relative;
     font-size: 24px;
+    width: 480px; /* 基本ブロックの 16 列と同じ幅に設定 */
     top: 5px;
+    left: -20px;
 }
 #showBase1 {
-    left:68px;
+    position:relative;
+    width: 120px; /* 基本ブロックの 4 列と同じ幅に設定 */
+    left:50px;
 }
 #showBase2 {
-    left:174px;
+    position:relative;
+    width: 120px; /* 基本ブロックの 4 列と同じ幅に設定 */
+    left:50px;
 }
 #showBase3 {
-    left:280px;
+    position:relative;
+    width: 120px; /* 基本ブロックの 4 列と同じ幅に設定 */
+    left:50px;
 }
 #showBase4 {
-    left:386px;
+    position:relative;
+    width: 120px; /* 基本ブロックの 4 列と同じ幅に設定 */
+    left:50px;
 }
 .distance {
     display: flex;
