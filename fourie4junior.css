@@ -237,6 +237,7 @@
     top:30px;
     left: 38px;
     height:40px;
+    border-radius: 5px;
 }
 .showBase {
     display:flex;
@@ -284,4 +285,5 @@
     top:30px;
     height:40px;
     left: 38px;
+    border-radius: 5px;
 }
