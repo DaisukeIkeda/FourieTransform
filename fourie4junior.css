@@ -230,9 +230,10 @@
     top: 20px;
 }
 .calc-button {
+    z-index:20;
     position: relative;
-    font-size: 24px;
-    top:5px;
+    font-size: 18px;
+    top:30px;
     left: 38px;
     height:40px;
 }
@@ -266,9 +267,10 @@
     top: 0px;
 }
 .composite-button {
+    z-index:20;
     position: relative;
     font-size: 18px;
-    top: 5px;
+    top:30px;
     height:40px;
     left: 38px;
 }
