@@ -9,6 +9,9 @@
 [小学生に教えるフーリエ変換](https://researchmap.jp/jow16lae8-617/)
 をご覧ください。
 
+アプリの利用にあたって制限や制約はありませんが、論文を発表するような立場の方であれば、以下の論文を引用していただけると有難いです。
+> Daisuke Ikeda: "LESSONS ON INFORMATION IN TERMS OF THE FOURIER TRANSFORM FOR PRIMARY-AGED STUDENTS", Proceedings of the 12th annual International Technology, Education and Development Conference (INTED2018), pp. 3734-3739, 2018.
+
 # インストールおよび使い方
 0. ダウンロードしたファイルをWebサーバ配下の適当な場所へ置き、当該URLへアクセスします。あるいは、[九州大学に設置したサーバ上に置いた当アプリ](https://rebrand.ly/486fe)にスマホやタブレット、パソコンのブラウザからアクセスします。
 1. ▲や▼ボタンを使って「送信ブロック」の形を決めます。
