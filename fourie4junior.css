@@ -178,6 +178,7 @@
     /*border: 4pt solid yellow; for debug */
 }
 #cursor-panel{ /* ▲と▼を格納する仮想のボックス*/
+    z-index:20;
     position: relative;
     display:flex;
 }
