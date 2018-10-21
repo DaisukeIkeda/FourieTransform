@@ -19,7 +19,7 @@ Anyone can use this app freely. If someone who publishs academi papers, I kindly
 > Daisuke Ikeda: "LESSONS ON INFORMATION IN TERMS OF THE FOURIER TRANSFORM FOR PRIMARY-AGED STUDENTS", Proceedings of the 12th annual International Technology, Education and Development Conference (INTED2018), pp. 3734-3739, 2018.
 
 # Install and How to use
-0. Put downloaded files somewhere under a Web server and access to the corresponding URL, using a browser of a smart-phone, tablet, or PC. Or you can use [App on a server at Kyushu Univ.](http://ikeike.i.kyushu-u.ac.jp/fourier.html).
+0. Put downloaded files somewhere under a Web server and access to the corresponding URL, using a browser of a smart-phone, tablet, or PC. Or you can use [App on a server at Kyushu Univ.](https://rebrand.ly/486fe).
 1. Figure out a shape of "Source", using ▲ and ▼ buttons.
 2. Pushing "Calculate!" button, you can see the number (co-efficient) of 4 basic blocks (base vectors), where these basic blocks are (1, 1, 1, 1), (1, 1, -1, -1), (1, -1, -1, 1), and (1, -1, 1, -1). For example, when the number of the 1st basic block is 2, then the height of the first four blocks of "4 Basic Blocks" are 2.
 3. Pushing "Composite" button, it computes the sum of 4 basic blocks and displays the result at "Received". In this computation, only checked basic blocks are used. If all basic blocks are checked, "Received" are the same as "Source".
