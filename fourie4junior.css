@@ -15,6 +15,10 @@
 #main {
     /* cover the entire screen */
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
     position: relative;
     width: 900px;  /* left-, right-panels: 180x2=360, center-panel: 540*/
     /*height: 100%;*/
@@ -163,6 +167,10 @@
 }
 .footer{
     display:flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
     position: relative;
     height:80px; /* 全体の高さ 640 - 36 - 36 - 488 = 640 - 560 = 80 */
     width:100%;
@@ -181,6 +189,10 @@
     z-index:20;
     position: relative;
     display:flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
 }
 #up-button1 {
     position: absolute;
@@ -241,6 +253,10 @@
 }
 .showBase {
     display:flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
     position: relative;
     font-size: 24px;
     width: 480px; /* 基本ブロックの 16 列と同じ幅に設定 */
@@ -269,6 +285,10 @@
 }
 .distance {
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
     position: relative;
     font-size: 18px;
     top:5px;
