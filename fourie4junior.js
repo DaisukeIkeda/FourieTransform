@@ -322,6 +322,24 @@ $(function() {
             row.appendTo(row_holder);
             row_holder.appendTo('#base-board');
 	}
+
+	// initialize basic vectors
+        for (var j = 1; j <= 16; ++j) {
+	    var i = 8; // when y=+1
+	    if ( j == 1 || j == 2 || j == 3 || j == 4 // 1st basic vec
+		 || j == 5 || j == 6 // 2nd basic vec
+		 || j == 9 || j == 12 // 3rd basic vec
+		 || j == 13 || j == 15 ) { // 4th basic vec
+		$("#panel4base" + i + '-' + j).attr("data-color-code", 1);
+	    }
+
+	    i = 9; // when y=-1
+	    if ( j == 7 || j == 8 // 2nd basic vec
+		 || j == 10 || j == 11 // 3rd basic vec
+		 || j == 14 || j == 16 ) { // 4th basic vec
+		$("#panel4base" + i + '-' + j).attr("data-color-code", 1);
+	    }
+	}
     }
 
     function new_outputboard(){
