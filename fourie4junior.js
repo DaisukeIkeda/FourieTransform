@@ -10,7 +10,7 @@ $(function() {
 		      [1, -1, 1, -1]];
     var factors = [1, 0, 0, 0]; //input_vec = \sum_i factors[i]*basic_vecs[i]
     var output_vec = [0, 0, 0, 0];
-    var showBase_vec = [1, 1, 1, 1]; // flag whether each basic bectors is used or not
+    var showBase_vec = [1, 1, 1, 1]; // flag whether each basic vectors is used or not
 
     // http://stackoverflow.com/questions/4817029/whats-the-best-way-to-detect-a-touch-screen-device-using-javascript
     function is_touch_device() {
@@ -94,7 +94,7 @@ $(function() {
 	var j;
 	var tmp_vec = [0, 0, 0, 0];
 
-	for(var k=0; k<dim; k++){// loop for basic bectors
+	for(var k=0; k<dim; k++){// loop for basic vectors
 	    for(var col=1; col<=dim; col++){
 		tmp_vec[col-1] = factors[k]*basic_vecs[k][col-1]; // k-th basic vector mulplied with its factor
 
