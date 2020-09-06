@@ -395,30 +395,30 @@ $(function() {
 
     if (is_touch_device()) {
 	// increase button
-        $("#up-button1").on('touchstart', function(){
+        $("#up-button1").on('mousedown', function(){
 	    return change_input_vec(1, 1);
 	});
-        $("#up-button2").on('touchstart', function(){
+        $("#up-button2").on('mousedown', function(){
 	    return change_input_vec(2, 1);
 	});
-        $("#up-button3").on('touchstart', function(){
+        $("#up-button3").on('mousedown', function(){
 	    return change_input_vec(3, 1);
 	});
-        $("#up-button4").on('touchstart', function(){
+        $("#up-button4").on('mousedown', function(){
 	    return change_input_vec(4, 1);
 	});
 
 	// decrease button
-        $("#down-button1").on('touchstart', function(){
+        $("#down-button1").on('mousedown', function(){
 	    return change_input_vec(1, -1);
 	});
-        $("#down-button2").on('touchstart', function(){
+        $("#down-button2").on('mousedown', function(){
 	    return change_input_vec(2, -1);
 	});
-        $("#down-button3").on('touchstart', function(){
+        $("#down-button3").on('mousedown', function(){
 	    return change_input_vec(3, -1);
 	});
-        $("#down-button4").on('touchstart', function(){
+        $("#down-button4").on('mousedown', function(){
 	    return change_input_vec(4, -1);
 	});
 
@@ -426,7 +426,7 @@ $(function() {
         $(".calc-button").on('mousedown', on_calc_bases);
 
 	// composition button
-        $(".composite-button").on('touchstart', on_composite_vecs);
+        $(".composite-button").on('mousedown', on_composite_vecs);
     }
     else {
 	// increase button
