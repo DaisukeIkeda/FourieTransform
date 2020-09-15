@@ -194,51 +194,46 @@
     display: -moz-box;
     display: -ms-flexbox;
 }
+.move-button {
+    font-size: 24px;
+}
 #up-button1 {
     position: absolute;
-    font-size: 24px;
     left: 45px;
     top: 0px;
 }
 #down-button1 {
     position: absolute;
-    font-size: 24px;
     left: 45px;
     top: 20px;
 }
 #up-button2 {
     position: absolute;
-    font-size: 24px;
     left: 75px;
     top: 0px;
 }
 #down-button2 {
     position: absolute;
-    font-size: 24px;
     left: 75px;
     top: 20px;
 }
 #up-button3 {
     position: absolute;
-    font-size: 24px;
     left: 105px;
     top: 0px;
 }
 #down-button3 {
     position: absolute;
-    font-size: 24px;
     left: 105px;
     top: 20px;
 }
 #up-button4 {
     position: absolute;
-    font-size: 24px;
     left: 135px;
     top: 0px;
 }
 #down-button4 {
     position: absolute;
-    font-size: 24px;
     left: 135px;
     top: 20px;
 }
